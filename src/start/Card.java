@@ -3,13 +3,19 @@ package start;
 public class Card {
 	
 
+    /**
+     * from 1 to 13, represent Two to Ace
+     */
     private byte rank;
     private byte suit;
 
     
     public Card(int i, int j) {
-        this.rank = (byte) i;
-        this.suit = (byte) j;
+        this.rank = (byte) (i % 13);
+        this.suit = (byte) (j % 4);
+        
+        if(rank == 0)
+        	rank = 13;
     }
     
     public byte getRank() {

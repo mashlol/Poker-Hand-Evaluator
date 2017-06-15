@@ -7,17 +7,17 @@ public class Main {
 		Card player2[] = new Card[5];
 		
 		// MAKE PLAYER 1's HAND
-		player1[0] = new Card(1, 0);
+		player1[0] = new Card(3, 0);
 		player1[1] = new Card(2, 0);
-		player1[2] = new Card(6, 0);
-		player1[3] = new Card(5, 0);
+		player1[2] = new Card(2, 1);
+		player1[3] = new Card(6, 0);
 		player1[4] = new Card(6, 1);
 		
 		
 		// MAKE PLAYER 2's HAND
-		player2[0] = new Card(1, 0);
+		player2[0] = new Card(4, 0);
 		player2[1] = new Card(2, 0);
-		player2[2] = new Card(3, 0);
+		player2[2] = new Card(2, 1);
 		player2[3] = new Card(6, 0);
 		player2[4] = new Card(6, 1);
 		
