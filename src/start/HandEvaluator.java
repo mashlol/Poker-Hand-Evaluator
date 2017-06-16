@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * @author Tidus
- *
- */
 public class HandEvaluator {
 
 	private Card cards[];
