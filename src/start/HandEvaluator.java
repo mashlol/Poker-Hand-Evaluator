@@ -12,7 +12,7 @@ public class HandEvaluator {
 
 	private Card cards[];
 	private String pattern;
-	private float handValue;
+	private double handValue;
 	
 	public HandEvaluator(Card cards[]) {
 		this.cards = cards;
@@ -55,12 +55,12 @@ public class HandEvaluator {
 		}
 		Collections.sort(sortedCardValues);
 		
-		float tempRank = 0;
+		double tempRank = 0;
 		
 		if (sortedCardValues.get(0) + 4 == sortedCardValues.get(4)
-				|| (sortedCardValues.get(4) == 13 && sortedCardValues.get(0) + 3 == sortedCardValues.get(3))) {		//2345A
+				|| (sortedCardValues.get(4) == 13 && sortedCardValues.get(0) == 1 && sortedCardValues.get(0) + 3 == sortedCardValues.get(3))) {		//2345A
 			pattern = "Straight";
-			tempRank = 56 + sortedCardValues.get(4) + (float)sortedCardValues.get(3) / 100;
+			tempRank = 56 + sortedCardValues.get(0);
 			for (byte x=0; x<4; x++) {
 				if (tallySuits[x] == 5) {
 					tempRank += 56;
@@ -93,14 +93,14 @@ public class HandEvaluator {
 		if (tempRank == 0) {
 			for (byte i=0; i<4; i++) {
 				if (tallySuits[i] == 5) {
-					tempRank = 70 + sortedCardValues.get(4) + (float) sortedCardValues.get(3) / 100 + (float) sortedCardValues.get(2) / 10000 + (float) sortedCardValues.get(1) / 1000000 + (float) sortedCardValues.get(0) / 100000000;
+					tempRank = 70 + sortedCardValues.get(4) + (double) sortedCardValues.get(3) / 100 + (double) sortedCardValues.get(2) / 10000 + (double) sortedCardValues.get(1) / 1000000 + (double) sortedCardValues.get(0) / 100000000;
 					pattern = "Flush";
 				}
 			}
 		}
 		
 		if (tempRank == 0) {
-			tempRank = sortedCardValues.get(4) + (float) sortedCardValues.get(3) / 100 + (float) sortedCardValues.get(2) / 10000 + (float) sortedCardValues.get(1) / 1000000 + (float) sortedCardValues.get(0) / 100000000;
+			tempRank = sortedCardValues.get(4) + (double) sortedCardValues.get(3) / 100 + (double) sortedCardValues.get(2) / 10000 + (double) sortedCardValues.get(1) / 1000000 + (double) sortedCardValues.get(0) / 100000000;
 			pattern = "High Card";
 		}
 		
@@ -111,8 +111,8 @@ public class HandEvaluator {
 	/**
 	 * sortedCardValues  1 to 13
 	 */
-	public float calcAddValue(List<Byte> sortedCardValues,int rate, int exclude1, int exclude2){
-		float tempRank = 0;
+	public double calcAddValue(List<Byte> sortedCardValues,int rate, int exclude1, int exclude2){
+		double tempRank = 0;
 		for (int i = 4; i >= 0; i--) {
 			if (sortedCardValues.get(i) == exclude1 || sortedCardValues.get(i) == exclude2)
 				continue;
