@@ -1,4 +1,4 @@
-package start;
+package com.st.evaluator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,7 +56,10 @@ public class HandEvaluator {
 		if (sortedCardValues.get(0) + 4 == sortedCardValues.get(4)
 				|| (sortedCardValues.get(4) == 13 && sortedCardValues.get(0) == 1 && sortedCardValues.get(0) + 3 == sortedCardValues.get(3))) {		//2345A
 			pattern = "Straight";
-			tempRank = 56 + sortedCardValues.get(0);
+			if(sortedCardValues.get(0) + 4 == sortedCardValues.get(4))
+				tempRank = 56 + sortedCardValues.get(0);
+			else
+				tempRank = 56 + sortedCardValues.get(0) - 1;
 			for (byte x=0; x<4; x++) {
 				if (tallySuits[x] == 5) {
 					tempRank += 56;
